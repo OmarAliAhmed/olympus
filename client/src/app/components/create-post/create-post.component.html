@@ -1,0 +1,18 @@
+<form enctype="multipart/form-data" (submit)="onSubmit()" onsubmit="return false">
+
+
+    <!--    <input type='file' (change)="onFileChanged($event)">-->
+
+    <input id="postImage" type="file" name="postImage" required>
+    <label for="title"><b>Title</b></label>
+    <input type="text" placeholder="Enter Title" [(ngModel)]="title" name="title" required>
+
+    <quill-editor></quill-editor>
+    <select [(ngModel)]="category" name="category" id="category-select">
+        <option value="" disabled selected>select a category</option>
+        <option *ngFor="let item of categories" [value]="item">{{item}}</option>
+    </select>
+
+    <button type="submit">Submit</button>
+
+</form>

@@ -1,0 +1,42 @@
+const moment = require("moment"),
+    mongoose = require("mongoose");
+
+
+var postSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    postImage: {
+        type: String
+    },
+    creator: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: String,
+        required: true
+    },
+    publishedAt: {
+        type: String,
+        default: null
+    },
+    status: {
+        type: Boolean,
+        default: null
+    },
+    category: {
+        type: String,
+        required: true,
+        lowercase: true
+    }
+})
+
+var Post = mongoose.model("Post", postSchema);
+
+module.exports = Post;
