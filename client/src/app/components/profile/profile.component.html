@@ -1,0 +1,17 @@
+<div class="author-data" *ngIf="authorDataLoaded">
+    <h1>{{author.name}}</h1>
+    <img src="{{author.profileImage}}" alt="">
+</div>
+
+
+<ng-container *ngIf="ifPostsLoaded && posts.length > 0">
+    <div class="post-card" *ngFor="let post of posts">
+        <h1 class="post-card-title">{{post.title}}</h1>
+        <img class="post-card-image" src="{{post.postImage}}">
+        <p class="post-card-author-name">{{post.creatorName}}</p>
+    </div>
+</ng-container>
+<div class="no-posts-label" *ngIf="posts.length == 0">
+
+    <p>unfortunetly, no posts for this author</p>
+</div>

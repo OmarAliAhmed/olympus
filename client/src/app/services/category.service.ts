@@ -4,32 +4,24 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 
-
 @Injectable({
     providedIn: 'root'
 })
-export class CreatePostService {
+export class CategoryService {
 
     constructor(private http: Http) {}
 
     authToken;
 
-
-
-
-    createpost(post) {
-        this.loadToken();
-        let headers = new Headers();
-        headers.append('Authorization', this.authToken)
-        headers.append("Accept", "application/json")
-
-        return this.http.post(environment.host + '/api/posts/posts', post, {
-            headers: headers
-        }).map(data => data.json())
-    }
-
     loadToken() {
         const token = localStorage.getItem('id_token');
         this.authToken = token;
+    }
+    
+    getCategoryPosts(category) {
+        this.loadToken();
+        let headers = new Headers();
+        headers.append('Authorization', this.authToken)
+        return this.http.get(`${environment.host}/api/posts/category/${category}`,{headers}).map(data => data.json());
     }
 }

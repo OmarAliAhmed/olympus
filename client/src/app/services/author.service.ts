@@ -11,6 +11,15 @@ export class AuthorService {
     constructor(private http: Http) {}
 
     authToken;
+    
+    getPostsCreatedByAuthor(id) {
+        this.loadToken();
+        let headers = new Headers();
+        headers.append('Authorization', this.authToken);
+        return this.http.get(environment.host + `/api/posts/authorposts/${id}`, {
+            headers
+        }).map(data => data.json())
+    }
 
     getPostCreator(id) {
         this.loadToken();

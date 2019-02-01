@@ -1,23 +1,15 @@
-<form (submit)="onRegisterSubmit()" enctype="multipart/form-data" method="post">
+<div class="register-container">
+   
+
+<form (submit)="onRegisterSubmit()" enctype="multipart/form-data" method="post" class="register-form" autocomplete="off">
     <div class="container">
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" [(ngModel)]="User.username" name="username" required>
+        <input class="register-input" type="text" placeholder="إسم المستخدم" [(ngModel)]="User.username" name="username" required>
 
-        <label for="username"><b>Name</b></label>
-        <input type="text" placeholder="Enter Name" [(ngModel)]="User.name" name="name" required>
+        <input class="register-input" type="text" placeholder="الإسم" [(ngModel)]="User.name" name="name" required>
 
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" [(ngModel)]="User.password" name="password" required>
-
-        <label for="bio"><b>Name</b></label>
-        <input type="text" placeholder="Enter Biography" [(ngModel)]="User.bio" name="bio" required>
-
-        <label for="bio"><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" [(ngModel)]="User.email" name="email" required>
-
-        <label for="profileImage"><b>Profile Image</b></label>
-        <input type="file" placeholder="Upload" id="profileImage" />
-
-        <button type="submit">Register</button>
-    </div>
+        <input class="register-input" type="email" placeholder="الإيميل" [(ngModel)]="User.email" name="email" required>
+  </div>
 </form>
+
+    <img class="register-mount-with-acropolis" src="../../../assets/mount-with-acropolis.png" alt="">
+</div>

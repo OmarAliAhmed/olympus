@@ -14,7 +14,7 @@ var postSchema = new mongoose.Schema({
     postImage: {
         type: String
     },
-    creator: {
+    creatorId: {
         type: String,
         required: true
     },
@@ -34,7 +34,13 @@ var postSchema = new mongoose.Schema({
         type: String,
         required: true,
         lowercase: true
+    },
+    creatorName: {
+        type: String,
+        required: true,
+        
     }
+    
 })
 
 var Post = mongoose.model("Post", postSchema);

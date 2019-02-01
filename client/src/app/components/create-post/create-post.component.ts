@@ -35,7 +35,8 @@ export class CreatePostComponent implements OnInit {
 
     onSubmit() {
         let content = document.querySelector('.ql-editor').innerHTML,
-            postImage: any = document.querySelector('#postImage').files[0];
+            postImageSelector: any =  document.querySelector('#postImage'),
+            postImage = postImageSelector.files[0];
 
         let Post: any = {
             content,

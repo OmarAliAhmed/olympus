@@ -31,13 +31,32 @@ var upload = multer({
     },
     fileFilter
 })
-//
-
-
-
+//Getting all posts by specific author
+router.get("/authorposts/:id", passport.authenticate('jwt', {
+    session: false
+}), (req, res) => {
+    Post.find({
+        creatorId: req.params.id
+    }, (err, data) => {
+        if (err) return err;
+        if (data.length > 0) {
+            res.json({
+                success: true,
+                data
+            })
+        } else {
+            res.json({
+                success: true,
+                data: "This user has no posts !"
+            })
+        }
+    })
+})
 
 //Getting all recommended posts route
-router.get("/recommended", (req, res) => {
+router.get("/recommended", passport.authenticate('jwt', {
+    session: false
+}), (req, res) => {
     Post.find({
         status: true
     }, (err, data) => {
@@ -46,8 +65,11 @@ router.get("/recommended", (req, res) => {
     })
 })
 
+
 //Getting a specific post using id
-router.get("/:id", (req, res) => {
+router.get("/:id", passport.authenticate('jwt', {
+    session: false
+}), (req, res) => {
     Post.findById(req.params.id, (err, data) => {
         if (err) return err;
         if (!data) {
@@ -65,7 +87,9 @@ router.get("/:id", (req, res) => {
 })
 
 //Getting a author using id
-router.get("/author/:id", (req, res) => {
+router.get("/author/:id", passport.authenticate('jwt', {
+    session: false
+}), (req, res) => {
     Post.findById(req.params.id, (err, data) => {
         if (err) return err;
         if (!data) {
@@ -83,25 +107,23 @@ router.get("/author/:id", (req, res) => {
 })
 
 //Getting all posts with a specific category
-router.get("/category/:category", (req, res) => {
+router.get("/category/:category", passport.authenticate('jwt', {
+    session: false
+}), (req, res) => {
     Post.find({
         category: req.params.category
-    }, (err, data) => {
+    }).sort('-date').exec((err, data) => {
         if (err) return err;
+
         if (!data) {
             res.json({
                 success: false,
                 msg: "not found"
             })
-        } else {
-            res.json({
-                success: true,
-                data
-            })
         }
+
     })
 })
-
 // Pending posts functionality
 
 // Getting pending posts to be reviewd
@@ -126,18 +148,18 @@ router.get("/pendingposts", isAdmin(), passport.authenticate('jwt', {
     })
 })
 //Posting a post by user to be reviewed
-router.post("/pendingposts", passport.authenticate('jwt', {
+router.post("/posts", passport.authenticate('jwt', {
     session: false
 }), upload.single("postImage"), (req, res) => {
     let newPost = new Post({
         title: req.body.title,
         content: req.body.content,
         postImage: req.file.path,
-        creator: req.user._id,
+        creatorId: req.user._id,
+        creatorName: req.user.name,
         createdAt: moment().format("Do MMMM, YYYY"),
         category: req.body.category
     })
-    console.log(req.body.path);
 
     newPost.save((err) => {
         if (err) return err;

@@ -32,12 +32,6 @@ export class PostComponent implements OnInit {
             document.querySelector(".post-content").innerHTML = this.post.content;
             this.getPostImageURL(this.post)
             this.ifPostLoaded = true;
-
-//            this.authorservice.getUserById(post.data.creator).subscribe(author => {
-//                this.author = author;
-//                this.getProfileImageURL(this.author)
-//                this.ifAuthorLoaded = true;
-//            })
         })
 
     }
