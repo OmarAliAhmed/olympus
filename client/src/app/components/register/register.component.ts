@@ -20,7 +20,8 @@ export class RegisterComponent implements OnInit {
 
     readImage(files) {
         if (files.length === 0) {
-            document.querySelector(".register-input-file-label").style.backgroundImage = `url(../../../assets/profile-image-field.png)`
+            let fileSelector: any = document.querySelector(".register-input-file-label");
+            fileSelector.style.backgroundImage = `url(../../../assets/profile-image-field.png)`;
             return;
         }
 

@@ -1,3 +1,8 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
 .feed-hero-screen {
     width: 100%;
     height: 100vh;
@@ -11,7 +16,9 @@
     align-items: flex-end;
 }
 
-.feed-hero-screen > p, h1, h4 {
+.feed-hero-screen > p,
+h1,
+h4 {
     position: relative;
     z-index: 10;
     display: block;
@@ -39,10 +46,37 @@
     position: absolute;
     z-index: 9;
     mix-blend-mode: multiply;
+    display: none;
+
 }
+
+.feed-section {
+    margin: 0 auto;
+    background-color: white;
+}
+
+.feed-section > h2 {
+    font-family: "Cairo";
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    margin: 0px;
+    font-size: 1em;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%
+}
+
+
 .post-card {
     position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
 .post-card > h6,
 h4,
 p {
@@ -52,20 +86,154 @@ p {
     z-index: 10;
     position: relative;
 }
+
+.post-card > h6 {
+    font-weight: 200;
+}
+
+.post-card > h4 {
+    padding-top: 0.5em;
+    font-size: 1.5em;
+}
+
+.post-card > p {
+    font-weight: 900;
+    padding-top: 0.5em;
+    font-size: 0.5em
+}
+
+.post-card-container {
+    margin-top: 15%;
+}
+
+
 .post-card-overlay {
-    background-color: #a64ac9;
     width: 100%;
     height: 100%;
     position: absolute;
     z-index: 9;
     mix-blend-mode: multiply;
+    background-color: gray;
+    opacity: 0.5;
 }
-.feed-section {
+
+.post-card-container {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    grid-auto-rows: minmax(200px, auto);
     margin: 0 auto;
-    background-color: #f6e6cc;
 }
-.feed-section > h2 {
-    font-family: "Cairo";
-    text-align: center;
-    font-weight: 600;
+
+//gird names decleration
+.post-card:nth-child(1) {
+    grid-area: post-1
+}
+
+.post-card:nth-child(2) {
+    grid-area: post-2
+}
+
+.post-card:nth-child(3) {
+    grid-area: post-3
+}
+
+.post-card:nth-child(4) {
+    grid-area: post-4;
+}
+
+.post-card:nth-child(5) {
+    grid-area: post-5;
+
+}
+
+.post-card:nth-child(6) {
+    grid-area: post-6;
+
+}
+
+//.grid1
+.grid1 {
+    grid-template-areas:
+        ' post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-2 post-2 post-2 post-2 post-2 post-2 post-3 post-3 post-3 post-3  post-3 post-3'
+        'post-4 post-4 post-4 post-4 post-4 post-4 post-5 post-5 post-5 post-5 post-5 post-5 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6'
+}
+
+//.grid1 for smaller screens
+@media only screen and (max-width: 425px) {
+    .grid1 {
+        grid-template-areas:
+            ' post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1'
+            'post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2'
+            'post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3'
+            'post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4'
+            'post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5'
+            'post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6';
+    }
+}
+
+//.grid2
+
+//.grid2 layout
+.grid2 {
+    grid-template-areas:
+        '. . post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 . .'
+        '. . post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-3 post-3 post-3 post-3 post-3 post-4 post-4 post-4 post-4 post-4 . .'
+        '. . post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 . .'
+}
+
+//.grid2 layout for smaller screens
+@media only screen and (max-width: 425px) {
+    .grid2 {
+        grid-template-areas:
+            ' post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1'
+            'post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2'
+            'post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3'
+            'post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4'
+            'post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5'
+            'post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6';
+    }
+}
+
+//.grid3 layout
+.grid3 {
+    grid-template-areas:
+        'post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1'
+        'post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1'
+        'post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3'
+        'post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-5 post-5 post-5 post-5 post-5 post-5 post-6 post-6 post-6 post-6 post-6 post-6'
+}
+
+//.grid3 layout for smaller screens 
+@media only screen and (max-width: 425px) {
+    .grid3 {
+        grid-template-areas:
+            ' post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1'
+            'post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2'
+            'post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3'
+            'post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4'
+            'post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5'
+            'post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6';
+    }
+}
+
+
+//.grid4 layout
+.grid4 {
+    grid-template-areas:
+        '. . post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 . .'
+        '. . post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 . .'
+        '. . post-3 post-3 post-3 post-3 post-3 post-4 post-4 post-4 post-4 post-4 post-5 post-5 post-5 post-5 post-5 post-6 post-6 post-6 post-6 post-6 . . '
+}
+
+//.grid4 layout for smaller screens 
+@media only screen and (max-width: 425px) {
+    .grid4 {
+        grid-template-areas:
+            ' post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1 post-1'
+            'post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2 post-2'
+            'post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3 post-3'
+            'post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4 post-4'
+            'post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5 post-5'
+            'post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6 post-6';
+    }
 }
